@@ -1,10 +1,18 @@
-import React from 'react';
+import { useState } from 'react';
 import Alert from './components/Alert';
+import Button from './components/Button';
 
 const App = () => {
+  const [alertVisible, setAlertVisibility] = useState(false);
+
   return (
     <div>
-      <Alert>My Alert!</Alert>
+      {alertVisible && (
+        <Alert onClose={() => setAlertVisibility(false)}>My Alert!</Alert>
+      )}
+      <Button onClick={() => setAlertVisibility(true)} color="warning">
+        My Button
+      </Button>
     </div>
   );
 };
@@ -22,7 +30,7 @@ export default App;
 
 //   return (
 //     <div>
-//       <ListGroup
+//       <ListGroup`
 //         items={items}
 //         heading="Cities"
 //         onSelectItem={handleSelectItem}
