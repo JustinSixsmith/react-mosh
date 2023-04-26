@@ -19,7 +19,7 @@
 
 // export default App;
 
-import ListGroup from './components/ListGroup/ListGroup';
+import ListGroup from './components/ListGroup';
 
 const App = () => {
   let items = ['New York', 'San Fransisco', 'Tokyo', 'London', 'Paris'];
