@@ -1,14 +1,26 @@
-import ExpandableText from './components/ExpandableText';
+import Form from './components/Form';
 
 const App = () => {
   return (
     <div>
-      <ExpandableText maxChars={100}>Hello World</ExpandableText>
+      <Form></Form>
     </div>
   );
 };
 
 export default App;
+
+// import ExpandableText from './components/ExpandableText';
+
+// const App = () => {
+//   return (
+//     <div>
+//       <ExpandableText maxChars={100}>Hello World</ExpandableText>
+//     </div>
+//   );
+// };
+
+// export default App;
 
 // import { useState } from 'react';
 
