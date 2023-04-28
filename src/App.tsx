@@ -1,19 +1,43 @@
 import { useState } from 'react';
-import NavBar from './components/NavBar';
-import Cart from './components/Cart';
 
 const App = () => {
-  const [cartItems, setCartItems] = useState(['Product1', 'Product2']);
+  const [game, setGame] = useState({
+    id: 1,
+    player: {
+      name: 'John',
+    },
+  });
+
+  const handleClick = () => {
+    setGame({ ...game, player: { ...game.player, name: 'Bob' } });
+  };
 
   return (
     <div>
-      <NavBar cartItemsCount={cartItems.length} />
-      <Cart cartItems={cartItems} onClear={() => setCartItems([])}></Cart>
+      {game.player.name}
+      <button onClick={handleClick}>Change Name</button>
     </div>
   );
 };
 
 export default App;
+
+// import { useState } from 'react';
+// import NavBar from './components/NavBar';
+// import Cart from './components/Cart';
+
+// const App = () => {
+//   const [cartItems, setCartItems] = useState(['Product1', 'Product2']);
+
+//   return (
+//     <div>
+//       <NavBar cartItemsCount={cartItems.length} />
+//       <Cart cartItems={cartItems} onClear={() => setCartItems([])}></Cart>
+//     </div>
+//   );
+// };
+
+// export default App;
 
 // import { produce } from 'immer';
 // import { useState } from 'react';
