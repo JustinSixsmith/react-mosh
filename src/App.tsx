@@ -1,26 +1,47 @@
 import { useState } from 'react';
 
 const App = () => {
-  const [game, setGame] = useState({
-    id: 1,
-    player: {
-      name: 'John',
-    },
+  const [pizza, setPizza] = useState({
+    name: 'Spicy Pepperoni',
+    toppings: ['Mushrooms'],
   });
 
-  const handleClick = () => {
-    setGame({ ...game, player: { ...game.player, name: 'Bob' } });
-  };
+  const handleClick = () {
+    setPizza({...pizza, toppings: [...pizza.toppings, 'Cheese'] });
+  }
 
   return (
     <div>
-      {game.player.name}
-      <button onClick={handleClick}>Change Name</button>
+      <button onClick={handleClick}>Click Me</button>
     </div>
   );
 };
 
 export default App;
+
+// import { useState } from 'react';
+
+// const App = () => {
+//   const [game, setGame] = useState({
+//     id: 1,
+//     player: {
+//       name: 'John',
+//     },
+//   });
+
+//   const handleClick = () => {
+//     setGame({ ...game, player: { ...game.player, name: 'Bob' } });
+//   };
+
+//   return (
+//     <div>
+//       {game.player.name}
+//       <button onClick={handleClick}>Change Name</button>
+//     </div>
+//   );
+// };
+
+// export default App;
 
 // import { useState } from 'react';
 // import NavBar from './components/NavBar';
