@@ -12,6 +12,8 @@ const App = () => {
 
   return (
     <div>
+      {pizza.toppings.map((topping) => topping).join(', ')}
+      <br />
       <button onClick={handleClick}>Click Me</button>
     </div>
   );
