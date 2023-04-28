@@ -6,9 +6,9 @@ const App = () => {
     toppings: ['Mushrooms'],
   });
 
-  const handleClick = () {
-    setPizza({...pizza, toppings: [...pizza.toppings, 'Cheese'] });
-  }
+  const handleClick = () => {
+    setPizza({ ...pizza, toppings: [...pizza.toppings, 'Cheese'] });
+  };
 
   return (
     <div>
