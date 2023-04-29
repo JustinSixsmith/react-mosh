@@ -1,4 +1,4 @@
-import { useForm } from 'react-hook-form';
+import { FieldValues, useForm } from 'react-hook-form';
 
 const Form = () => {
   const { register, handleSubmit } = useForm();
