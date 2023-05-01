@@ -1,33 +1,16 @@
-import { useEffect, useState } from 'react';
-import { CanceledError } from './services/api-client';
-import userService, { User } from './services/user-service';
+import { useEffect, useState } from "react";
+import { CanceledError } from "./services/api-client";
+import userService, { User } from "./services/user-service";
+import useUsers from "./hooks/useUsers";
 
 const App = () => {
-  const [users, setUsers] = useState<User[]>([]);
-  const [error, setError] = useState('');
-  const [isLoading, setLoading] = useState(false);
-
-  useEffect(() => {
-    setLoading(true);
-    const { request, cancel } = userService.getAllUsers();
-    request
-      .then((res) => {
-        setUsers(res.data);
-        setLoading(false);
-      })
-      .catch((err) => {
-        if (err instanceof CanceledError) return;
-        setError(err.message);
-        setLoading(false);
-      });
-    return () => cancel();
-  }, []);
+  const { users, error, isLoading, setUsers, setError } = useUsers();
 
   const deleteUser = (user: User) => {
     const originalUsers = [...users];
     setUsers(users.filter((u) => u.id !== user.id));
 
-    userService.deleteUser(user.id).catch((err) => {
+    userService.delete(user.id).catch((err) => {
       setError(err.message);
       setUsers(originalUsers);
     });
@@ -38,12 +21,12 @@ const App = () => {
 
     const newUser = {
       id: 0,
-      name: 'Mosh',
+      name: "Mosh",
     };
     setUsers([newUser, ...users]);
 
     userService
-      .createUser(newUser)
+      .create(newUser)
       .then(({ data: savedUser }) => setUsers([savedUser, ...users]))
       .catch((err) => {
         setError(err.message);
@@ -53,10 +36,10 @@ const App = () => {
 
   const updateUser = (user: User) => {
     const originalUsers = [...users];
-    const updatedUser = { ...user, name: user.name + '!' };
+    const updatedUser = { ...user, name: user.name + "!" };
     setUsers(users.map((u) => (u.id === user.id ? updatedUser : u)));
 
-    userService.updateUser(updatedUser).catch((err) => {
+    userService.update(updatedUser).catch((err) => {
       setError(err.message);
       setUsers(originalUsers);
     });
